@@ -1,0 +1,69 @@
+1622027521215	geckodriver	INFO	geckodriver 0.19.1
+1622027521220	geckodriver	INFO	Listening on 127.0.0.1:49649
+1622027522359	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.FsCWlnKbMo7W"
+1622027522937	Marionette	INFO	Marionette enabled
+1622027523031	Marionette	TRACE	Received observer notification toplevel-window-ready
+1622027524774	Marionette	TRACE	Received observer notification marionette-startup-requested
+1622027524775	Marionette	TRACE	Waiting until startup recorder finished recording startup scripts...
+1622027524798	Marionette	TRACE	All scripts recorded.
+1622027524798	Marionette	DEBUG	Setting recommended pref app.update.disabledForTesting to true
+1622027524798	Marionette	DEBUG	Setting recommended pref browser.contentblocking.introCount to 99
+1622027524798	Marionette	DEBUG	Setting recommended pref browser.tabs.remote.separatePrivilegedContentProcess to false
+1622027524799	Marionette	DEBUG	Setting recommended pref browser.tabs.unloadOnLowMemory to false
+1622027524799	Marionette	DEBUG	Setting recommended pref browser.toolbars.bookmarks.visibility to never
+1622027524799	Marionette	DEBUG	Setting recommended pref datareporting.policy.dataSubmissionPolicyAccepted to false
+1622027524799	Marionette	DEBUG	Setting recommended pref dom.disable_beforeunload to true
+1622027524799	Marionette	DEBUG	Setting recommended pref dom.push.connection.enabled to false
+1622027524799	Marionette	DEBUG	Setting recommended pref extensions.getAddons.discovery.api_url to data:, 
+1622027524799	Marionette	DEBUG	Setting recommended pref privacy.trackingprotection.enabled to false
+1622027524799	Marionette	DEBUG	Setting recommended pref prompts.contentPromptSubDialog to false
+1622027524799	Marionette	DEBUG	Setting recommended pref security.certerrors.mitm.priming.enabled to false
+1622027524801	Marionette	INFO	Listening on port 37767
+1622027524801	Marionette	DEBUG	Marionette is listening
+1622027524878	Marionette	DEBUG	Accepted connection 0 from 127.0.0.1:39368
+1622027524889	Marionette	DEBUG	0 -> [0,1,"newSession",{"acceptInsecureCerts":true,"browserName":"firefox","capabilities":{"desiredCapabilities":{"acceptInsecureCerts":true,"browserName":"firefox"}}}]
+1622027524889	Marionette	DEBUG	0 <- [1,1,{"error":"unknown command","message":"newSession","stacktrace":"WebDriverError@chrome://marionette/content/error.js:181: ... t@chrome://marionette/content/server.js:238:9\n_onJSONObjectReady/<@chrome://marionette/content/transport.js:504:20\n"},null]
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+1622027524938	geckodriver	INFO	Listening on 127.0.0.1:52451
+1622027525938	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileqkjY85"
+1622027526481	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1622027528292	Marionette	INFO	Listening on port 38265
+1622027528366	Marionette	WARN	TLS certificate errors will be ignored for this session
+1622027624348	geckodriver	INFO	geckodriver 0.19.1
+1622027624353	geckodriver	INFO	Listening on 127.0.0.1:46229
+1622027625476	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.hy72ABW3jGIW"
+1622027626040	Marionette	INFO	Marionette enabled
+1622027626123	Marionette	TRACE	Received observer notification toplevel-window-ready
+1622027627741	Marionette	TRACE	Received observer notification marionette-startup-requested
+1622027627741	Marionette	TRACE	Waiting until startup recorder finished recording startup scripts...
+1622027627756	Marionette	TRACE	All scripts recorded.
+1622027627756	Marionette	DEBUG	Setting recommended pref app.update.disabledForTesting to true
+1622027627756	Marionette	DEBUG	Setting recommended pref browser.contentblocking.introCount to 99
+1622027627757	Marionette	DEBUG	Setting recommended pref browser.tabs.remote.separatePrivilegedContentProcess to false
+1622027627757	Marionette	DEBUG	Setting recommended pref browser.tabs.unloadOnLowMemory to false
+1622027627757	Marionette	DEBUG	Setting recommended pref browser.toolbars.bookmarks.visibility to never
+1622027627757	Marionette	DEBUG	Setting recommended pref datareporting.policy.dataSubmissionPolicyAccepted to false
+1622027627758	Marionette	DEBUG	Setting recommended pref dom.disable_beforeunload to true
+1622027627758	Marionette	DEBUG	Setting recommended pref dom.push.connection.enabled to false
+1622027627758	Marionette	DEBUG	Setting recommended pref extensions.getAddons.discovery.api_url to data:, 
+1622027627758	Marionette	DEBUG	Setting recommended pref privacy.trackingprotection.enabled to false
+1622027627758	Marionette	DEBUG	Setting recommended pref prompts.contentPromptSubDialog to false
+1622027627758	Marionette	DEBUG	Setting recommended pref security.certerrors.mitm.priming.enabled to false
+1622027627760	Marionette	INFO	Listening on port 37811
+1622027627760	Marionette	DEBUG	Marionette is listening
+1622027627793	Marionette	DEBUG	Accepted connection 0 from 127.0.0.1:49360
+1622027627799	Marionette	DEBUG	0 -> [0,1,"newSession",{"acceptInsecureCerts":true,"browserName":"firefox","capabilities":{"desiredCapabilities":{"acceptInsecureCerts":true,"browserName":"firefox"}}}]
+1622027627799	Marionette	DEBUG	0 <- [1,1,{"error":"unknown command","message":"newSession","stacktrace":"WebDriverError@chrome://marionette/content/error.js:181: ... t@chrome://marionette/content/server.js:238:9\n_onJSONObjectReady/<@chrome://marionette/content/transport.js:504:20\n"},null]
+Exiting due to channel error.
+Exiting due to channel error.
+Exiting due to channel error.
+1622027627837	geckodriver	INFO	Listening on 127.0.0.1:50031
+1622027627842	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileci9Jun"
+1622027628490	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1622027630493	Marionette	INFO	Listening on port 42449
+1622027630568	Marionette	WARN	TLS certificate errors will be ignored for this session
