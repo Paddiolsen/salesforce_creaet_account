@@ -3,7 +3,7 @@ Documentation   Denne bot skal illustrer en medarbejder som laver opslag i
 ...             cvr registret for at fremskaffe data på en kunde.
 Library         RPA.Dialogs
 Library         RPA.Excel.Files
-Library         RPA.Browser
+Library         RPA.Browser.Selenium
 Library         RPA.Tables
 Library         RPA.Robocloud.Secrets
 
@@ -58,3 +58,15 @@ Get data from cvr
 
 Auth Salesforce and create new accounts
     [Setup]    SF Api auth
+
+    &{dict} =    Create Dictionary
+    ...        Name=NyxTech
+    ...        NumberOfEmployees=100
+    ...        Type=Prospect
+    ...        Industry=Enginerring
+    ...        Ownership=Private
+    ...        BillingCountry=Denmark
+    ...        BillingCity=Hovedstaden
+    ...        Phone=20803707
+
+    SF create new account    account_information=&{dict}
