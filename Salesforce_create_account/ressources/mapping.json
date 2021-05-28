@@ -1,0 +1,10 @@
+{
+    "Account": {
+        "account_name": "Name",
+        "account_type": "Type",
+        "account_industry": "Industry",
+        "account_billing_city": "BillingCity",
+        "account_phone": "Phone",
+        "account_description": "Description"
+    }
+}

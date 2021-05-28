@@ -6,12 +6,14 @@ Library         RPA.Excel.Files
 Library         RPA.Browser.Selenium
 Library         RPA.Tables
 Library         RPA.Robocloud.Secrets
+Library         RPA.Tasks
 
 # Own librarys
 Resource    ressources/salesforce_library.robot
 
 # Test only
 Library         RPA.core.notebook
+Library    RPA.JSON
 
 
 *** Variables ***
@@ -44,29 +46,30 @@ Extract data and update excel
     ${company_type}     Get Text        css:DIV.row.dataraekker:nth-child(5) > DIV.col-sm-6:nth-child(2)
     
     
-    Set Worksheet Value      row=${row}[ID]    column=C    value=${address}         
-    Set Worksheet Value      row=${row}[ID]    column=D    value=${zipcode}         
-    Set Worksheet Value      row=${row}[ID]    column=E    value=${company_type}
-    
-    Save Workbook
+    &{dict}    Create Dictionary
+    ...    Name=
+    ...    Type= ${company_type}
+    ...    Industry=     #Branche kode
+    ...    BillingCity= ${address} ${zipcode}
+    ...    Phone=         #Telefonnummer
+    ...    Description=     #CVR nummer
+
+
 
 
 *** Tasks ***
 Get data from cvr
     [Setup]     Open Available Browser      ${CVR_URL}     
     Open Excel file and get cvr row
-
-Auth Salesforce and create new accounts
+    ${sheet}=    Read Worksheet As Table    ${DATA_SHEET}    
+Auth Salesforce
     [Setup]    SF Api auth
 
-    &{dict} =    Create Dictionary
-    ...        Name=NyxTech
-    ...        NumberOfEmployees=100
-    ...        Type=Prospect
-    ...        Industry=Enginerring
-    ...        Ownership=Private
-    ...        BillingCountry=Denmark
-    ...        BillingCity=Hovedstaden
-    ...        Phone=20803707
+conver to csv
+    ${workbook}=    Open Workbook    /home/patrick/Robots/Examples/Salesforce_create_account/Salesforce_create_account/data.xlsx
+    ${dict}=    Read Worksheet     header=True
 
-    SF create new account    account_information=&{dict}
+    Log    ${dict}
+
+Insert bulk data
+    ${status}=    Execute Dataloader Insert    ${dict}    mapping_object    object_type

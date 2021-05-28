@@ -1,64 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 4.0.2 (Python 3.7.5 on linux)" generated="20210526 19:21:10.036" rpa="true" schemaversion="2">
+<robot generator="Robot 4.0.2 (Python 3.7.5 on linux)" generated="20210528 13:38:44.054" rpa="true" schemaversion="2">
 <suite id="s1" name="Create Account" source="/home/patrick/Robots/Examples/Salesforce_create_account/Salesforce_create_account/create_account.robot">
-<test id="s1-t1" name="Auth Salesforce and create new accounts">
-<kw name="SF Api auth" library="salesforce_library" type="SETUP">
-<kw name="Auth With Token" library="RPA.Salesforce">
-<arg>username=${USER_NAME}</arg>
-<arg>password=${PASSWORD}</arg>
-<arg>api_token=${TOKEN}</arg>
-<doc>Authorize to Salesforce with security token, username
-and password creating instance.</doc>
-<status status="PASS" starttime="20210526 19:21:10.454" endtime="20210526 19:21:11.009"/>
+<test id="s1-t1" name="#1   conver to csv">
+<kw name="Open Workbook" library="RPA.Excel.Files">
+<var>${workbook}</var>
+<arg>/home/patrick/Robots/Examples/Salesforce_create_account/Salesforce_create_account/data.xlsx</arg>
+<doc>Open an existing Excel workbook.</doc>
+<msg timestamp="20210528 13:38:44.877" level="INFO">Opened workbook: &lt;RPA.Excel.Files.XlsxWorkbook object at 0x7f1ccbeab810&gt;</msg>
+<msg timestamp="20210528 13:38:44.877" level="INFO">${workbook} = &lt;RPA.Excel.Files.XlsxWorkbook object at 0x7f1ccbeab810&gt;</msg>
+<status status="PASS" starttime="20210528 13:38:44.860" endtime="20210528 13:38:44.877"/>
 </kw>
-<status status="PASS" starttime="20210526 19:21:10.454" endtime="20210526 19:21:11.010"/>
-</kw>
-<kw name="Create Dictionary" library="BuiltIn">
-<var>&amp;{dict}</var>
-<arg>Name=NyxTech</arg>
-<arg>NumberOfEmployees=100</arg>
-<arg>Type=Prospect</arg>
-<arg>Industry=Enginerring</arg>
-<arg>Ownership=Private</arg>
-<arg>BillingCountry=Denmark</arg>
-<arg>BillingCity=Hovedstaden</arg>
-<arg>Phone=20803707</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<msg timestamp="20210526 19:21:11.014" level="INFO">&amp;{dict} = { Name=NyxTech | NumberOfEmployees=100 | Type=Prospect | Industry=Enginerring | Ownership=Private | BillingCountry=Denmark | BillingCity=Hovedstaden | Phone=20803707 }</msg>
-<status status="PASS" starttime="20210526 19:21:11.012" endtime="20210526 19:21:11.015"/>
-</kw>
-<kw name="SF create new account" library="salesforce_library">
-<arg>account_information=&amp;{dict}</arg>
-<kw name="Create Salesforce Object" library="RPA.Salesforce">
-<var>&amp;{status}</var>
-<arg>object_type=Account</arg>
-<arg>object_data=${account_information}</arg>
-<doc>Create Salesforce object by type and data.</doc>
-<msg timestamp="20210526 19:21:11.847" level="INFO">&amp;{status} = { id=0010900000RDxKkAAL | success=True | errors=[] }</msg>
-<status status="PASS" starttime="20210526 19:21:11.020" endtime="20210526 19:21:11.847"/>
+<kw name="Read Worksheet" library="RPA.Excel.Files">
+<var>${dict}</var>
+<arg>header=True</arg>
+<doc>Read the content of a worksheet into a list of dictionaries.</doc>
+<msg timestamp="20210528 13:38:44.878" level="INFO">${dict} = [{'ID': 2, 'cvr': 70515113, 'address': 'Park Allé 355', 'zipcode': '2605 Brøndby', 'company_type': 'Aktieselskab'}, {'ID': 3, 'cvr': 1111, 'address': None, 'zipcode': None, 'company_type': None}, {'ID...</msg>
+<status status="PASS" starttime="20210528 13:38:44.877" endtime="20210528 13:38:44.878"/>
 </kw>
 <kw name="Log" library="BuiltIn">
-<arg>${account_information.Name} ${status.succes}</arg>
+<arg>${dict}</arg>
 <doc>Logs the given message with the given level.</doc>
-<msg timestamp="20210526 19:21:11.853" level="FAIL">Resolving variable '${status.succes}' failed: AttributeError: succes</msg>
-<status status="FAIL" starttime="20210526 19:21:11.848" endtime="20210526 19:21:11.853"/>
+<msg timestamp="20210528 13:38:44.879" level="INFO">[{'ID': 2, 'cvr': 70515113, 'address': 'Park Allé 355', 'zipcode': '2605 Brøndby', 'company_type': 'Aktieselskab'}, {'ID': 3, 'cvr': 1111, 'address': None, 'zipcode': None, 'company_type': None}, {'ID': 4, 'cvr': 62951311, 'address': 'Park Allé 355', 'zipcode': '2605 Brøndby', 'company_type': 'Aktieselskab'}, {'ID': 5, 'cvr': 35826890, 'address': 'Stengade 7', 'zipcode': '3000 Helsingør', 'company_type': 'Anpartsselskab'}, {'ID': 6, 'cvr': 28683944, 'address': 'Østergade 36 - 38, 4.', 'zipcode': '1100 København K', 'company_type': 'Aktieselskab'}, {'ID': 7, 'cvr': 31592615, 'address': 'Solrødgårds Alle 6\nNørre Herlev', 'zipcode': '3400 Hillerød', 'company_type': 'Aktieselskab'}]</msg>
+<status status="PASS" starttime="20210528 13:38:44.879" endtime="20210528 13:38:44.879"/>
 </kw>
-<status status="FAIL" starttime="20210526 19:21:11.016" endtime="20210526 19:21:11.854"/>
-</kw>
-<status status="FAIL" starttime="20210526 19:21:10.453" endtime="20210526 19:21:11.855">Resolving variable '${status.succes}' failed: AttributeError: succes</status>
+<status status="PASS" starttime="20210528 13:38:44.859" endtime="20210528 13:38:44.880"/>
 </test>
 <doc>Denne bot skal illustrer en medarbejder som laver opslag i
-cvr registret for at fremskaffe data på en kunde.</doc>
-<status status="FAIL" starttime="20210526 19:21:10.037" endtime="20210526 19:21:11.858"/>
+cvr registret for at fremskaffe data på en kunde. [data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIKICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8IS0tIEdlbmVyYXRlZCBieSBncmFwaHZpeiB2ZXJzaW9uIDIuNDMuMCAoMCkKIC0tPgo8IS0tIFRpdGxlOiBDcmVhdGUgQWNjb3VudCBQYWdlczogMSAtLT4KPHN2ZyB3aWR0aD0iMzAycHQiIGhlaWdodD0iNDZwdCIKIHZpZXdCb3g9IjAuMDAgMC4wMCAzMDIuMTEgNDYuMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgo8ZyBpZD0iZ3JhcGgwIiBjbGFzcz0iZ3JhcGgiIHRyYW5zZm9ybT0ic2NhbGUoMSAxKSByb3RhdGUoMCkgdHJhbnNsYXRlKDQgNDIuMTgpIj4KPHRpdGxlPkNyZWF0ZSBBY2NvdW50PC90aXRsZT4KPHBvbHlnb24gZmlsbD0id2hpdGUiIHN0cm9rZT0idHJhbnNwYXJlbnQiIHBvaW50cz0iLTQsNCAtNCwtNDIuMTggMjk4LjExLC00Mi4xOCAyOTguMTEsNCAtNCw0Ii8+CjwhLS0gU3RhcnQgLS0+CjxnIGlkPSJub2RlMSIgY2xhc3M9Im5vZGUiPgo8dGl0bGU+U3RhcnQ8L3RpdGxlPgo8ZWxsaXBzZSBmaWxsPSIjZWVlZWVlIiBzdHJva2U9IiNjY2NjY2MiIGN4PSIzMy45NCIgY3k9Ii0xOS4wOSIgcng9IjMzLjg4IiByeT0iMTkuMTgiLz4KPHRleHQgdGV4dC1hbmNob3I9Im1pZGRsZSIgeD0iMzMuOTQiIHk9Ii0xNS45OSIgZm9udC1mYW1pbHk9IkhlbHZldGljYSwgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIuMDAiIGZpbGw9IiMwZjBmMGYiPlN0YXJ0PC90ZXh0Pgo8L2c+CjwhLS0gQSAtLT4KPGcgaWQ9Im5vZGUzIiBjbGFzcz0ibm9kZSI+Cjx0aXRsZT5BPC90aXRsZT4KPGcgaWQ9ImFfbm9kZTMiPjxhIHhsaW5rOnRpdGxlPSJjb252ZXIgdG8gY3N2Ij4KPHBhdGggZmlsbD0iIzVjYjg1YyIgc3Ryb2tlPSIjNWNiODVjIiBkPSJNMTg2Ljg4LC0zMi41OUMxODYuODgsLTMyLjU5IDExMi44OCwtMzIuNTkgMTEyLjg4LC0zMi41OSAxMDguMzgsLTMyLjU5IDEwMy44OCwtMjguMDkgMTAzLjg4LC0yMy41OSAxMDMuODgsLTIzLjU5IDEwMy44OCwtMTQuNTkgMTAzLjg4LC0xNC41OSAxMDMuODgsLTEwLjA5IDEwOC4zOCwtNS41OSAxMTIuODgsLTUuNTkgMTEyLjg4LC01LjU5IDE4Ni44OCwtNS41OSAxODYuODgsLTUuNTkgMTkxLjM4LC01LjU5IDE5NS44OCwtMTAuMDkgMTk1Ljg4LC0xNC41OSAxOTUuODgsLTE0LjU5IDE5NS44OCwtMjMuNTkgMTk1Ljg4LC0yMy41OSAxOTUuODgsLTI4LjA5IDE5MS4zOCwtMzIuNTkgMTg2Ljg4LC0zMi41OSIvPgo8dGV4dCB0ZXh0LWFuY2hvcj0ibWlkZGxlIiB4PSIxNDkuODgiIHk9Ii0xNS45OSIgZm9udC1mYW1pbHk9IkhlbHZldGljYSwgQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIuMDAiIGZpbGw9IiNmZmZmZmYiPmNvbnZlciB0byBjc3Y8L3RleHQ+CjwvYT4KPC9nPgo8L2c+CjwhLS0gU3RhcnQmIzQ1OyZndDtBIC0tPgo8ZyBpZD0iZWRnZTIiIGNsYXNzPSJlZGdlIj4KPHRpdGxlPlN0YXJ0JiM0NTsmZ3Q7QTwvdGl0bGU+CjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iYmxhY2siIGQ9Ik02Ny45LC0xOS4wOUM3NS45MywtMTkuMDkgODQuNzQsLTE5LjA5IDkzLjUsLTE5LjA5Ii8+Cjxwb2x5Z29uIGZpbGw9ImJsYWNrIiBzdHJva2U9ImJsYWNrIiBwb2ludHM9IjkzLjcxLC0yMi41OSAxMDMuNzEsLTE5LjA5IDkzLjcxLC0xNS41OSA5My43MSwtMjIuNTkiLz4KPC9nPgo8IS0tIEVuZCAtLT4KPGcgaWQ9Im5vZGUyIiBjbGFzcz0ibm9kZSI+Cjx0aXRsZT5FbmQ8L3RpdGxlPgo8ZWxsaXBzZSBmaWxsPSIjZWVlZWVlIiBzdHJva2U9IiNjY2NjY2MiIGN4PSIyNjIuOTkiIGN5PSItMTkuMDkiIHJ4PSIzMS4yMyIgcnk9IjE5LjE4Ii8+Cjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjI2Mi45OSIgeT0iLTE1Ljk5IiBmb250LWZhbWlseT0iSGVsdmV0aWNhLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMi4wMCIgZmlsbD0iIzBmMGYwZiI+RW5kPC90ZXh0Pgo8L2c+CjwhLS0gQSYjNDU7Jmd0O0VuZCAtLT4KPGcgaWQ9ImVkZ2UxIiBjbGFzcz0iZWRnZSI+Cjx0aXRsZT5BJiM0NTsmZ3Q7RW5kPC90aXRsZT4KPHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSJibGFjayIgZD0iTTE5Ni4wOCwtMTkuMDlDMjA0LjUzLC0xOS4wOSAyMTMuMzEsLTE5LjA5IDIyMS42LC0xOS4wOSIvPgo8cG9seWdvbiBmaWxsPSJibGFjayIgc3Ryb2tlPSJibGFjayIgcG9pbnRzPSIyMjEuNzgsLTIyLjU5IDIzMS43OCwtMTkuMDkgMjIxLjc4LC0xNS41OSAyMjEuNzgsLTIyLjU5Ii8+CjwvZz4KPC9nPgo8L3N2Zz4K|Graph]</doc>
+<status status="PASS" starttime="20210528 13:38:44.056" endtime="20210528 13:38:44.880"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tasks</stat>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat pass="0" fail="1" skip="0" id="s1" name="Create Account">Create Account</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Create Account">Create Account</stat>
 </suite>
 </statistics>
 <errors>
